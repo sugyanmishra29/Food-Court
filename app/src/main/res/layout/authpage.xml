@@ -47,5 +47,5 @@
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@mipmap/foodcourt_round" />
 </androidx.constraintlayout.widget.ConstraintLayout>
