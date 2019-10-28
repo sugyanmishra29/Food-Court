@@ -43,6 +43,8 @@ public class signinpage extends AppCompatActivity {
                             editor.putBoolean("logged",true).apply();
                             Intent i = new Intent(signinpage.this,MainActivity.class);
                             startActivity(i);
+                            finish();
+
                         }
 
                         else{
@@ -70,7 +72,6 @@ public class signinpage extends AppCompatActivity {
         sp = getSharedPreferences("login",MODE_PRIVATE);
         editor = sp.edit();
 
-
         siUsername=(EditText)findViewById(R.id.siUsername);
         siPassword=(EditText)findViewById(R.id.siPassword);
 
@@ -88,6 +89,7 @@ public class signinpage extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(signinpage.this, "Logging you in. Please wait", Toast.LENGTH_SHORT).show();
                 checkLogin();
             }
         });

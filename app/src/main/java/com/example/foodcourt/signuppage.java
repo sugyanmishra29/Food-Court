@@ -28,7 +28,7 @@ public class signuppage extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("Users").child(email_txt).setValue(password_txt);
 
-        Intent i = new Intent(signuppage.this,signinpage.class);
+        Intent i = new Intent(signuppage.this,authpage.class);
         startActivity(i);
         Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
     }

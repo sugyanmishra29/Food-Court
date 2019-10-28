@@ -11,8 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".authpage"/>
-        <activity android:name=".signinpage"/>
-        <activity android:name=".signuppage"/>
+        <activity android:name=".help">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".signinpage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".signuppage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
