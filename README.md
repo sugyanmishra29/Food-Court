@@ -18,5 +18,6 @@ Coding club project
                 android:value=".MainActivity" />
      
   write this piece of code inside <activity> tag in AndroidManifest.xml file to add the back button
+  
 2. How to build AlertDialogs
 3. How to use SharedPreferences
