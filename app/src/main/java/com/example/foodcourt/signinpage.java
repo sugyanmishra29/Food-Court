@@ -1,6 +1,7 @@
 package com.example.foodcourt;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,8 @@ public class signinpage extends AppCompatActivity {
     private EditText siPassword;
     private Button btnSignIn;
     private Button btnResetSi;
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
     private void checkLogin(){
         final String email_txt = siUsername.getText().toString().trim();
@@ -37,6 +40,7 @@ public class signinpage extends AppCompatActivity {
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child(email_txt).exists()){
                         if (dataSnapshot.child(email_txt).getValue().toString().equals(password_txt)){
+                            editor.putBoolean("logged",true).apply();
                             Intent i = new Intent(signinpage.this,MainActivity.class);
                             startActivity(i);
                         }
@@ -63,6 +67,9 @@ public class signinpage extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signinpage);
+        sp = getSharedPreferences("login",MODE_PRIVATE);
+        editor = sp.edit();
+
 
         siUsername=(EditText)findViewById(R.id.siUsername);
         siPassword=(EditText)findViewById(R.id.siPassword);
