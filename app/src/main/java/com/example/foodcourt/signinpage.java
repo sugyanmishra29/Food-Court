@@ -43,6 +43,7 @@ public class signinpage extends AppCompatActivity {
                             editor.putBoolean("logged",true).apply();
                             Intent i = new Intent(signinpage.this,MainActivity.class);
                             startActivity(i);
+                            Toast.makeText(signinpage.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                             finish();
 
                         }
