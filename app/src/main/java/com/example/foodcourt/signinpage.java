@@ -32,38 +32,48 @@ public class signinpage extends AppCompatActivity {
         final String email_txt = siUsername.getText().toString().trim();
         final String password_txt = siPassword.getText().toString().trim();
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        if(email_txt.equals(""))
+        {
+            Toast.makeText(signinpage.this,"Please fill email.",Toast.LENGTH_SHORT).show();
+        }
+        else {
 
-        ref.child("Users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    if (dataSnapshot.child(email_txt).exists()){
-                        if (dataSnapshot.child(email_txt).getValue().toString().equals(password_txt)){
-                            editor.putBoolean("logged",true).apply();
-                            Intent i = new Intent(signinpage.this,MainActivity.class);
-                            startActivity(i);
-                            Toast.makeText(signinpage.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                            finish();
+            if(password_txt.equals(""))
+            {
+                Toast.makeText(signinpage.this,"Please fill password.",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
-                        }
+                ref.child("Users").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            if (dataSnapshot.child(email_txt).exists()) {
+                                if (dataSnapshot.child(email_txt).getValue().toString().equals(password_txt)) {
+                                    Toast.makeText(signinpage.this, "Logging you in. Please wait", Toast.LENGTH_SHORT).show();
+                                    editor.putBoolean("logged", true).apply();
+                                    Intent i = new Intent(signinpage.this, MainActivity.class);
+                                    startActivity(i);
+                                    Toast.makeText(signinpage.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                                    finish();
 
-                        else{
-                            Toast.makeText(signinpage.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(signinpage.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(signinpage.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
 
-                    else{
-                        Toast.makeText(signinpage.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(signinpage.this, "Error. Try again", Toast.LENGTH_SHORT).show();
                     }
-                }
+                });
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(signinpage.this, "Error. Try again", Toast.LENGTH_SHORT).show();
-            }
-        });
+        }
     }
 
     @Override
@@ -90,7 +100,7 @@ public class signinpage extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(signinpage.this, "Logging you in. Please wait", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(signinpage.this, "Logging you in. Please wait", Toast.LENGTH_SHORT).show();
                 checkLogin();
             }
         });
