@@ -12,10 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Sign in to your account"
+        android:text="Welcome back"
         android:textColor="#0A0A0A"
-        android:textSize="24sp"
-        />
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/siUsername"

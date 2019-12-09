@@ -50,7 +50,8 @@ public class signinpage extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             if (dataSnapshot.child(email_txt).exists()) {
-                                if (dataSnapshot.child(email_txt).getValue().toString().equals(password_txt)) {
+                                if (dataSnapshot.child(email_txt).child("Password").getValue().toString().equals(password_txt)) {
+                                    //ref.child("Users").child(email_txt).child("Password").setValue(password_txt)
                                     Toast.makeText(signinpage.this, "Logging you in. Please wait", Toast.LENGTH_SHORT).show();
                                     editor.putBoolean("logged", true).apply();
                                     Intent i = new Intent(signinpage.this, MainActivity.class);

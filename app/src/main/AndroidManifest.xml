@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".authpage"/>
+        <activity android:name=".authpage"
+            android:label="Food Court Ordering App"/>
         <activity android:name=".help">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -18,12 +19,14 @@
 
                 />
         </activity>
-        <activity android:name=".signinpage">
+        <activity android:name=".signinpage"
+            android:label="Sign in to your account">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".signuppage">
+        <activity android:name=".signuppage"
+            android:label="Setup your new account">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
